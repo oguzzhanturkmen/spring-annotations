@@ -7,6 +7,8 @@ import study.spring.service.MailService;
 import study.spring.service.MessageService;
 import study.spring.service.WhatsappService;
 
+import java.util.Arrays;
+
 public class MessageApplication {
     public static void main(String[] args) {
 
@@ -34,5 +36,8 @@ public class MessageApplication {
 
         MessageService service4 = context.getBean("whatsappService",MessageService.class);
         service4.saveMessage(message.getMessage());
+
+        String[] beanNames = context.getBeanDefinitionNames();
+        Arrays.stream(beanNames).forEach(System.out::println);
     }
 }
